@@ -4,6 +4,7 @@ import TodoAdd from "./TodoAdd";
 import TodoList from "./TodoList";
 import Logout from "./Logout";
 import { addTodo, getTodos, deleteTodo, updateTodo } from "./libs/todoServer";
+import Loading from "./Loading";
 
 function Todo() {
   const [todos, setTodos] = useState([]);
@@ -82,10 +83,10 @@ function Todo() {
     }
   };
   return (
-    <div className="w-[700px] bg-white rounded-lg flex flex-col items-center shadow-inner p-6">
+    <div className="w-[700px] bg-white rounded-lg flex flex-col items-center shadow-inner p-10">
       <TodoAdd onAddTodo={handleAddTodo} />
       {loading ? (
-        <p>Loading...</p>
+        <Loading />
       ) : (
         <TodoList
           todos={todos}

@@ -24,7 +24,7 @@ function TodoList({ todos, onDeleteTodo, onEditTodo }) {
         {todos?.map(({ todo, isCompleted }, index) => {
           return (
             <li
-              className="w-full flex item justify-between p-4 h-20"
+              className="w-full flex item justify-between py-4 h-20"
               key={index}
             >
               <div className="w-2/3 flex items-center gap-2 px-2  bg-red-400 rounded-l-lg">

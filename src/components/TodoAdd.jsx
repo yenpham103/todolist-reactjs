@@ -19,7 +19,7 @@ function TodoAdd({ onAddTodo }) {
     setForm({ ...form, todo: value });
   };
   return (
-    <form action="" className="w-full flex p-4" onSubmit={handleAddTodo}>
+    <form action="" className="w-full flex py-4" onSubmit={handleAddTodo}>
       <input
         type="text"
         placeholder="Add Task..."
