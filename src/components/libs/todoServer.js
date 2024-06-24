@@ -77,3 +77,18 @@ export const updateTodo = async (id, newTodo, apiKey) => {
     return response.json();
   }
 };
+export const searchTodo = async (todo, apiKey) => {
+  const query = new URLSearchParams({ q: todo }).toString();
+  const response = await fetch(`${SERVER_API}/todos?${query}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Api-Key": apiKey,
+    },
+  });
+  if (!response.ok) {
+    throw new Error("Failed to search todo");
+  } else {
+    return response.json();
+  }
+};

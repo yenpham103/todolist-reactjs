@@ -54,11 +54,11 @@ function TodoList({ todos, onDeleteTodo, onEditTodo }) {
                   <>
                     {isCompleted ? (
                       <span className="line-through w-4/5 text-base font-medium text-white">
-                        {todo}
+                        {todo?.length >= 30 ? todo.slice(0, 30) + "..." : todo}
                       </span>
                     ) : (
-                      <span className=" w-4/5 text-base font-medium text-white">
-                        {todo}
+                      <span className=" w-4/5 text-base font-medium text-white ">
+                        {todo?.length >= 30 ? todo.slice(0, 30) + "..." : todo}
                       </span>
                     )}
                   </>

@@ -1,5 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function TodoAdd({ onAddTodo }) {
   const [form, setForm] = useState({ todo: "" });
   const [loading, setLoading] = useState(false);
@@ -7,6 +9,19 @@ function TodoAdd({ onAddTodo }) {
     e.preventDefault();
     setLoading(true);
     try {
+      if (!form.todo) {
+        toast.error("Todo không được để trống !", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+        return;
+      }
       await onAddTodo({ todo: form.todo });
       setForm({ todo: "" });
     } catch (error) {
@@ -33,6 +48,7 @@ function TodoAdd({ onAddTodo }) {
       <button className="w-1/3 bg-red-500 hover:bg-red-700 text-white text-base font-medium rounded-r-lg">
         {loading ? "Adding..." : "Add"}
       </button>
+      <ToastContainer />
     </form>
   );
 }
