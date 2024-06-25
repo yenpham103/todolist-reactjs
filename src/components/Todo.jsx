@@ -129,7 +129,7 @@ function Todo() {
   };
 
   return (
-    <div className="w-[700px] bg-white rounded-lg flex flex-col items-center shadow-inner p-10">
+    <div className="w-3/5 bg-white rounded-lg flex flex-col items-center shadow-inner p-10">
       <button
         className="w-full bg-red-500 hover:bg-red-700 text-white text-xl font-medium rounded-lg py-2"
         onClick={() => setShowSearch(!showSearch)}

@@ -21,7 +21,7 @@ function App() {
   }, [navigate]);
 
   return (
-    <div className="w-full h-screen bg-gradient-to-r from-red-500 flex items-center justify-center">
+    <div className=" mx-auto w-full bg-gradient-to-r from-red-500 flex items-center justify-center p-12">
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/todo" element={<ProtectedRoute element={Todo} />} />
