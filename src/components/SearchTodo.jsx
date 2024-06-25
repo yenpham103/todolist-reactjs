@@ -7,16 +7,21 @@ function SearchTodo({ onSearchTodo, onDebounceSearch }) {
   const [loading, setLoading] = useState(false);
   const debounceSearchTerm = useDebounce(searchTerm, 800);
   useEffect(() => {
-    if (debounceSearchTerm) {
-      const fetchSearch = async () => {
-        try {
+    const fetchSearch = async () => {
+      setLoading(true);
+      try {
+        if (debounceSearchTerm) {
           await onDebounceSearch(debounceSearchTerm);
-        } catch (error) {
-          console.error("Error searching for todo:", error);
+        } else {
+          await onDebounceSearch("");
         }
-      };
-      fetchSearch();
-    }
+      } catch (error) {
+        console.error("Error searching for todo:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchSearch();
   }, [debounceSearchTerm]);
 
   const handleSearch = async (e) => {

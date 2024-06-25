@@ -42,7 +42,7 @@ function Todo() {
       }
     };
     fetchTodos();
-  }, [apiKey]);
+  }, [apiKey, showSearch]);
 
   const handleAddTodo = async (newTodo) => {
     setLoading(true);
@@ -112,12 +112,15 @@ function Todo() {
     }
   };
   const handleDebounceSearch = async (debounceSearchTerm) => {
+    console.log(debounceSearchTerm);
     try {
       if (apiKey) {
         const { data } = await searchTodo(debounceSearchTerm, apiKey);
         const { listTodo } = data;
         if (listTodo && listTodo.length > 0) {
           setTodos(listTodo);
+        } else {
+          setTodos([]);
         }
       }
     } catch (error) {
